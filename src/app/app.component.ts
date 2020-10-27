@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CartService} from "./core/services/cart.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Component } from '@angular/core';
           <div class="logo">BOOKING</div>
           <div class="horiz-grid">
             <span class="btn" routerLink="search" routerLinkActive="active">SEARCH</span>
-            <span class="btn" routerLink="cart" routerLinkActive="active" >CART (1)</span>
+            <span class="btn" routerLink="cart" routerLinkActive="active" >CART ({{cart.items.length}})</span>
             <span class="btn" >LOGOUT</span>
           </div>
           <em>Fabio Biondi</em>
@@ -23,4 +24,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-fabiobiondi-booking';
+
+  constructor(public cart: CartService) {
+  }
+
 }

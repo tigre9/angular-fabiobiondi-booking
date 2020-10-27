@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Hotel} from "../../model/hotel";
+import {Hotel, Room} from "../../model/hotel";
+import {CartService} from "../../core/services/cart.service";
 
 @Component({
   selector: 'app-search',
@@ -41,8 +42,7 @@ import {Hotel} from "../../model/hotel";
       <!--MAP-->
       <div class="card map">
         <div>
-          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{active?.city}}&zoom=15&size=700x200&key=AIzaSyBYvPZPIFB4TYsRFl6TF3QIbxghz_p3ito"
-               width="100%" height="200">
+<!--          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{active?.city}}&zoom=15&size=700x200&key=AIzaSyBYvPZPIFB4TYsRFl6TF3QIbxghz_p3ito"  width="100%" height="200">-->
           <div class="address">
             <div class="font-big">{{active?.name}}</div>
             <div class="font-small">{{active?.location.address}}</div>
@@ -71,6 +71,8 @@ import {Hotel} from "../../model/hotel";
 
           <div
             *ngFor="let room of active?.rooms"
+            (click)="cart.addToCart(active,room)"
+
             class="horiz-grid separator">
             <div>{{room.label}}</div>
             <div>
@@ -126,7 +128,9 @@ export class SearchComponent {
   active: Hotel;
   activeImage: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    public cart: CartService,
+    private http: HttpClient) {
     this.searchHotels(this.text);
   }
 
@@ -151,4 +155,5 @@ export class SearchComponent {
     ${msg}
     to: ${this.active.email}
     `);
-  }}
+  }
+}
