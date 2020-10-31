@@ -9,9 +9,8 @@ import {CartService} from "../../core/services/cart.service";
     <!--CONTENT-->
     <div class="wrapper three-cols">
       <!--SIDEBAR-->
-      <div class="card side-bar scrollable">
-        <div class="title">Search</div>
-        <div class="content">
+
+     <app-card title="Search" customCls="side-bar" [isScrollable]="true">
 
           <app-hotel-form
             [text]="text"
@@ -27,47 +26,37 @@ import {CartService} from "../../core/services/cart.service";
                 (setActive)="setActive($event)"
             ></app-hotel-list>
 
-
-        </div>
-      </div>
+     </app-card>
 
       <!--MAP-->
-      <div class="card map">
-        <div>
-          <app-gmap [active]="active"></app-gmap>
-        </div>
-      </div>
+      <app-card  customCls="map" [padding]="false">
+        <app-gmap [active]="active"></app-gmap>
+      </app-card>
+
 
       <!--INFO BOX-->
-      <div class="card">
-        <div class="content center">
+      <app-card [centeredContent]="true">
           <app-separator></app-separator>
           <app-rates [active]="active"></app-rates>
           <app-stars [stars]="active?.stars"></app-stars>
           <br>
           <app-reservations [active]="active" (addToCart)="cart.addToCart(active,$event)"></app-reservations>
-        </div>
-
-      </div>
+      </app-card>
 
       <!--IMAGE GALLERY-->
-      <div class="card gallery scrollable">
+      <app-card [isScrollable]="true" customCls="gallery">
         <app-image-gallery [active]="active" [activeImage]="activeImage"></app-image-gallery>
-      </div>
+      </app-card>
 
       <!--SERVICES-->
-      <div class="card services scrollable">
-        <div class="title">Services</div>
+      <app-card customCls="services" [isScrollable]="true" title="Services">
         <app-services [active]="active"></app-services>
-      </div>
+      </app-card>
 
       <!--CONTACT FORM-->
-      <div class="card contact">
-        <div class="title">Contacts</div>
-        <div class="content">
+      <app-card customCls="contact" title="Contacts">
           <app-contact-form (send)="sendEmail($event)"></app-contact-form>
-        </div>
-      </div>
+      </app-card>
 
     </div>
   `,

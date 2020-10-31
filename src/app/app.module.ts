@@ -19,6 +19,7 @@ import { ImageGalleryComponent } from './features/search/components/image-galler
 import { ServicesComponent } from './features/search/components/services/services.component';
 import { ContactFormComponent } from './features/search/components/contact-form/contact-form.component';
 import { ReservationsComponent } from './features/search/components/reservations/reservations.component';
+import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReservationsComponent } from './features/search/components/reservations
     ImageGalleryComponent,
     ServicesComponent,
     ContactFormComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
