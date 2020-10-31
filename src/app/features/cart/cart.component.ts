@@ -19,6 +19,12 @@ import {CartService} from "../../core/services/cart.service";
             </div>
           </div>
 
+          <button
+            *ngIf="cart.items.length"
+            type="submit"
+            (click)="cart.proceed()"
+          >PROCEED</button>
+
 
           <br>
           <br>

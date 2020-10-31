@@ -9,6 +9,16 @@ import { LoginComponent } from './features/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { IntToArrayPipe } from './features/pipes/int-to-array.pipe';
+import { HotelListComponent } from './features/search/components/hotel-list/hotel-list.component';
+import { HotelFormComponent } from './features/search/components/hotel-form/hotel-form.component';
+import { SeparatorComponent } from './features/shared/components/separator/separator.component';
+import { GmapComponent } from './features/search/components/gmap/gmap.component';
+import { RatesComponent } from './features/search/components/rates/rates.component';
+import { StarsComponent } from './features/search/components/stars/stars.component';
+import { ImageGalleryComponent } from './features/search/components/image-gallery/image-gallery.component';
+import { ServicesComponent } from './features/search/components/services/services.component';
+import { ContactFormComponent } from './features/search/components/contact-form/contact-form.component';
+import { ReservationsComponent } from './features/search/components/reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +26,17 @@ import { IntToArrayPipe } from './features/pipes/int-to-array.pipe';
     SearchComponent,
     CartComponent,
     LoginComponent,
-    IntToArrayPipe
+    IntToArrayPipe,
+    HotelListComponent,
+    HotelFormComponent,
+    SeparatorComponent,
+    GmapComponent,
+    RatesComponent,
+    StarsComponent,
+    ImageGalleryComponent,
+    ServicesComponent,
+    ContactFormComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

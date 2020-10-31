@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-login',
   template: `
     <div class="wrapper centered">
-      <div class="card vh-centered">
+      <div class="card vh-centered" [ngClass]="{'error': auth.error}">
         <div class="title">Login</div>
         <div class="content">
 
-          <form>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="password">
-            <button type="submit">SIGN-IN</button>
+          <form #f="ngForm" (submit)="auth.login(f.value)">
+            <input type="text" placeholder="Username" [ngModel] name="user" required>
+            <input type="password" placeholder="password" [ngModel] name="pass" required>
+            <button type="submit" [disabled]="f.invalid" >SIGN-IN</button>
           </form>
         </div>
       </div>
@@ -22,11 +23,9 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
 
-  constructor() { }
+  constructor(public auth: AuthService) { }
 
-  ngOnInit(): void {
-  }
 
 }

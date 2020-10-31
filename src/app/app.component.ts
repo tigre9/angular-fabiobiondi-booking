@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {CartService} from "./core/services/cart.service";
+import {AuthService} from "./core/services/auth.service";
 
 @Component({
   selector: 'app-root',
   template: `
-    <div>
+    <div *ngIf="auth.isLogged()">
       <!--navigation bar-->
       <div class="navigation">
         <div class="horiz-grid">
@@ -12,9 +13,9 @@ import {CartService} from "./core/services/cart.service";
           <div class="horiz-grid">
             <span class="btn" routerLink="search" routerLinkActive="active">SEARCH</span>
             <span class="btn" routerLink="cart" routerLinkActive="active" >CART ({{cart.items.length}})</span>
-            <span class="btn" >LOGOUT</span>
+            <span class="btn" (click)="auth.logout()">LOGOUT</span>
           </div>
-          <em>Fabio Biondi</em>
+          <em>{{auth.data.name}}</em>
         </div>
       </div>
     </div>
@@ -25,7 +26,7 @@ import {CartService} from "./core/services/cart.service";
 export class AppComponent {
   title = 'angular-fabiobiondi-booking';
 
-  constructor(public cart: CartService) {
+  constructor(public cart: CartService,public auth: AuthService) {
   }
 
 }
