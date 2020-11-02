@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Hotel, Room} from "../../../../model/hotel";
-import {CartService} from "../../../../core/services/cart.service";
 
 @Component({
   selector: 'app-reservations',

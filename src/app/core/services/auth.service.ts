@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Auth} from "../../model/auth";
 import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class AuthService {
       .set('user', user)
       .set('pass', pass);
 
-    this.http.get<Auth>(`http://localhost:3000/login`, { params })
+    this.http.get<Auth>(`${environment.url}/login`, { params })
       .subscribe(
         res => {
           this.data = res;
